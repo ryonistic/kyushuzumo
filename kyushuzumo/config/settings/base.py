@@ -89,10 +89,13 @@ THIRD_PARTY_APPS = [
     "allauth",
     "allauth.account",
     "allauth.socialaccount",
+    'ckeditor',
+    'django_bleach',
 ]
 
 LOCAL_APPS = [
     "kyushuzumo.users",
+    "kyushuzumo.blog",
     # Your stuff: custom apps go here
 ]
 # https://docs.djangoproject.com/en/dev/ref/settings/#installed-apps
@@ -173,7 +176,33 @@ STATICFILES_FINDERS = [
 MEDIA_ROOT = str(APPS_DIR / "media")
 # https://docs.djangoproject.com/en/dev/ref/settings/#media-url
 MEDIA_URL = "/media/"
+CKEDITOR_UPLOAD_PATH = 'content/'
+CKEDITOR_JQUERY_URL = 'https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js'
+CKEDITOR_IMAGE_BACKEND = "pillow"
 
+CKEDITOR_CONFIGS = {
+    'default': {
+        'toolbar': 'basic',
+    },
+}
+
+# Which HTML tags are allowed
+BLEACH_ALLOWED_TAGS = ['p', 'b', 'i', 'u', 'em', 'strong', 'a']
+
+# Which HTML attributes are allowed
+BLEACH_ALLOWED_ATTRIBUTES = ['href', 'title', 'style']
+
+# Which CSS properties are allowed in 'style' attributes (assuming
+# style is an allowed attribute)
+BLEACH_ALLOWED_STYLES = [
+    'font-family', 'font-weight', 'text-decoration', 'font-variant']
+
+# Strip unknown tags if True, replace with HTML escaped characters if
+# False
+BLEACH_STRIP_TAGS = True
+
+# Strip comments, or leave them in.
+BLEACH_STRIP_COMMENTS = False
 # TEMPLATES
 # ------------------------------------------------------------------------------
 # https://docs.djangoproject.com/en/dev/ref/settings/#templates
