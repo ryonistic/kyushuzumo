@@ -36,3 +36,41 @@ class Post(models.Model):
 
     def __str__(self):
         return str(f'{self.title} by {self.author}')
+
+class Pro(models.Model):
+    SUMO_RANKS = (
+            ('JONOKUCHI', 'JONOKUCHI'),
+            ('JONIDAN', 'JONIDAN'),
+            ('SANDANME', 'SANDANME'),
+            ('MAKUSHITA', 'MAKUSHITA'),
+            ('JURYO', 'JURYO'),
+            ('MAEGASHIRA', 'MAEGASHIRA'),
+            ('MAEGASHIRA', 'MAEGASHIRA'),
+            ('KOMUSUBI', 'KOMUSUBI'),
+            ('SEKIWAKE', 'SEKIWAKE'),
+            ('OZEKI', 'OZEKI'),
+            ('YOKOZUNA', 'YOKOZUNA'),
+            )
+    name = models.CharField(max_length=255)
+    date_of_birth = models.DateField(blank=True, null=True)
+    place_of_birth = models.CharField(max_length=500)
+    height = models.PositiveBigIntegerField(default=170)
+    weight = models.PositiveBigIntegerField(default=90)
+    wins = models.PositiveBigIntegerField(default=0)
+    losses = models.PositiveBigIntegerField(default=0)
+    no_contest = models.PositiveBigIntegerField(default=0)
+    rank = models.CharField(choices = SUMO_RANKS, max_length=255, null=True, blank=True)
+    championships = models.TextField()
+    image = models.ImageField(blank=True, null=True, upload_to='pros/')
+
+    def save(self, *args, **kwargs):
+        super().save(*args, **kwargs)
+        # each image file must be sized down to save space
+        image = Image.open(self.image.path)
+        if image.height > 700 or image.width > 700:
+            output_size = (700, 700)
+            image.thumbnail(output_size)
+            image.save(self.image.path)
+
+    def __str__(self):
+        return str(self.name)

@@ -1,13 +1,20 @@
 from django.contrib.auth import get_user_model
 from rest_framework import serializers
-from .models import Post
+from .models import Post, Pro
 
+
+class ProSerializer(serializers.ModelSerializer):
+    """Setting up the Post model as a serialized
+    entry in DRF"""
+    class Meta:
+        fields = ('id', 'name', 'rank', 'date_of_birth', 'place_of_birth', 'height', 'weight', 'wins', 'losses', 'no_contest', 'championships', 'image')
+        model = Pro
 
 class PostSerializer(serializers.ModelSerializer):
     """Setting up the Post model as a serialized
     entry in DRF"""
     class Meta:
-        fields = ('id', 'author', 'title', 'body', 'date_posted',)
+        fields = ('id', 'author', 'title', 'content', 'created_at',)
         model = Post
 
 class UserSerializer(serializers.ModelSerializer):

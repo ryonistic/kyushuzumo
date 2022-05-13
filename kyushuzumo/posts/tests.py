@@ -18,7 +18,7 @@ class BlogTests(TestCase):
 
         #Create a post
         test_post = Post.objects.create(
-        author=testuser1, title='Blog Title', body='Body content...')
+        author=testuser1, title='Blog Title', content='Body content...')
         test_post.save()
 
     def test_blog_content(self):
@@ -28,7 +28,7 @@ class BlogTests(TestCase):
         post = Post.objects.get(id=1)
         author = f'{post.author}'
         title = f'{post.title}'
-        body = f'{post.body}'
+        content = f'{post.content}'
         self.assertEqual(author, 'testuser1')
         self.assertEqual(title, 'Blog Title')
-        self.assertEqual(body, 'Body content...')
+        self.assertEqual(content, 'Body content...')

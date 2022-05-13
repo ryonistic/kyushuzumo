@@ -4,9 +4,17 @@ not been implemented to keep things simpler.
 """
 from django.contrib.auth import get_user_model
 from rest_framework import generics
-from .models import Post
+from rest_framework.permissions import IsAdminUser
+from .models import Post, Pro
 from .permissions import IsAuthorOrReadOnly
-from .serializers import PostSerializer, UserSerializer
+from .serializers import PostSerializer, ProSerializer, UserSerializer
+
+class ProList(generics.ListCreateAPIView):
+    """A simple ListCreateAPIView that
+    allows user to view a list or add more items
+    to it, i.e. a blog feed."""
+    queryset = Pro.objects.all()
+    serializer_class = ProSerializer
 
 
 class PostList(generics.ListCreateAPIView):
@@ -23,6 +31,15 @@ class PostDetail(generics.RetrieveUpdateDestroyAPIView):
     permission_classes = (IsAuthorOrReadOnly,)
     queryset = Post.objects.all()
     serializer_class = PostSerializer
+
+
+class ProDetail(generics.RetrieveUpdateDestroyAPIView):
+    """RetrieveUpdateDestroyAPIView that allows
+    users to view individual posts that they can update or
+    destroy, etc. """
+    permission_classes = (IsAdminUser,)
+    queryset = Pro.objects.all()
+    serializer_class = ProSerializer
 
 class UserList(generics.ListCreateAPIView):
     """A simple ListCreateAPIView that
