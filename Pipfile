@@ -19,6 +19,7 @@ uritemplate = "*"
 markdown = "*"
 dj-rest-auth = "*"
 django-cors-headers = "*"
+stripe = "*"
 
 [dev-packages]
 

@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "f0bf45aa6cb0f02e69c08e5aab1478342d0f4b724b46786208686d540dd58763"
+            "sha256": "eb401a39f96ccb8996dfa4bd4d54113f4f075e86a40155b3c419b58d3f30654d"
         },
         "pipfile-spec": 6,
         "requires": {
@@ -473,7 +473,7 @@
                 "sha256:68d7c56fd5a8999887728ef304a6d12edc7be74f1cfa47714fc8b414525c9a61",
                 "sha256:f22fa1e554c9ddfd16e6e41ac79759e17be9e492b3587efa038054674760e72d"
             ],
-            "markers": "python_version >= '2.7' and python_version not in '3.0, 3.1, 3.2, 3.3, 3.4, 3.5'",
+            "markers": "python_version >= '3'",
             "version": "==2.27.1"
         },
         "requests-oauthlib": {
@@ -538,6 +538,14 @@
             ],
             "markers": "python_version >= '3.5'",
             "version": "==0.4.2"
+        },
+        "stripe": {
+            "hashes": [
+                "sha256:f87027ebdcb5b3f3cb3ca67cc1a14c5b44aacdacd081b8b50a6bf94e2bb86f13",
+                "sha256:feb400d70a0fbfa54df7e6376c8f9b87651ded977cd6a02ee32c661a607e259a"
+            ],
+            "index": "pypi",
+            "version": "==3.0.0"
         },
         "uritemplate": {
             "hashes": [
