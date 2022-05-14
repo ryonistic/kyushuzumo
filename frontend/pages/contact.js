@@ -1,9 +1,43 @@
 import Head from 'next/head'
+import {useState} from 'react'
+import {useRouter} from 'next/router'
 import Image from 'next/image'
 import Link from 'next/link'
 import Navbar from '../components/navbar'
 
+
+
 const Contact = () => {
+    const router = useRouter()
+        const handleSubmit = async (event) => {
+            event.preventDefault()
+
+            const data = {
+              name: event.target.name.value,
+              email: event.target.email.value,
+              phone: event.target.phone.value,
+              message: event.target.message.value,
+            }
+
+            const JSONdata = JSON.stringify(data)
+            console.log(JSONdata);
+
+            const endpoint = 'http://127.0.0.1:8000/api/v1/contact/'
+
+            const options = {
+              method: 'POST',
+              headers: {
+                'Content-Type': 'application/json',
+              },
+              body: JSONdata,
+            }
+
+            const response = await fetch(endpoint, options)
+            const result = await response.json()
+            alert(`Your Data was submitted, click ok to go back to homepage`)
+            router.push("/")
+          }
+
   return (
     <>
 
@@ -47,11 +81,12 @@ const Contact = () => {
          </div>
          <div className="w-full lg:w-1/2 xl:w-5/12 px-4">
             <div className="bg-white relative rounded-lg p-8 sm:p-12 shadow-lg">
-               <form method="POST" action="http://127.0.0.1:8000/api/v1/contact/">
+               <form onSubmit={handleSubmit}>
                   <div className="mb-6">
                      <input
                         type="text"
                         placeholder="Your Name"
+                        name="name"
                         className="
                         w-full
                         rounded
@@ -69,6 +104,7 @@ const Contact = () => {
                   <div className="mb-6">
                      <input
                         type="email"
+                        name="email"
                         placeholder="Your Email"
                         className="
                         w-full
@@ -87,6 +123,7 @@ const Contact = () => {
                   <div className="mb-6">
                      <input
                         type="text"
+                        name="phone"
                         placeholder="Your Phone"
                         className="
                         w-full
@@ -105,6 +142,7 @@ const Contact = () => {
                   <div className="mb-6">
                      <textarea
                         rows="6"
+                        name="message"
                         placeholder="Your Message"
                         className="
                         w-full

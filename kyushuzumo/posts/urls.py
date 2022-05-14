@@ -1,5 +1,5 @@
 from django.urls import path
-from .views import PostList, PostDetail, ProList, UserDetail, UserList, ProDetail
+from .views import ContactView, PostList, PostDetail, ProList, UserDetail, UserList, ProDetail
 
 urlpatterns = [
     path('users/', UserList.as_view()),
@@ -8,4 +8,5 @@ urlpatterns = [
     path('', PostList.as_view()),
     path('pros/', ProList.as_view()),
     path('pros/<int:pk>/', ProDetail.as_view()),
+    path('contact/', ContactView.as_view()),
 ]

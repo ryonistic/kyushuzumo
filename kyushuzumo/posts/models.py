@@ -74,3 +74,12 @@ class Pro(models.Model):
 
     def __str__(self):
         return str(self.name)
+
+class Contact(models.Model):
+    name = models.CharField(max_length=255)
+    email = models.EmailField()
+    phone = models.CharField(max_length=15)
+    message = models.CharField(max_length=500)
+
+    def __str__(self):
+        return str(self.name)

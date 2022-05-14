@@ -18,6 +18,7 @@ pyyaml = "*"
 uritemplate = "*"
 markdown = "*"
 dj-rest-auth = "*"
+django-cors-headers = "*"
 
 [dev-packages]
 

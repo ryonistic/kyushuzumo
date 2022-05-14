@@ -3,11 +3,18 @@ create API views. Viewsets or routers have
 not been implemented to keep things simpler.
 """
 from django.contrib.auth import get_user_model
+from django.shortcuts import redirect
 from rest_framework import generics
 from rest_framework.permissions import IsAdminUser
-from .models import Post, Pro
+from .models import Contact, Post, Pro
 from .permissions import IsAuthorOrReadOnly
-from .serializers import PostSerializer, ProSerializer, UserSerializer
+from .serializers import ContactSerializer, PostSerializer, ProSerializer, UserSerializer
+
+
+class ContactView(generics.CreateAPIView):
+    queryset = Contact.objects.all()
+    serializer_class = ContactSerializer
+    
 
 class ProList(generics.ListCreateAPIView):
     """A simple ListCreateAPIView that
