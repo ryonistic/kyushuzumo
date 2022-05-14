@@ -2,12 +2,41 @@ import Head from 'next/head'
 import Image from 'next/image'
 import Link from 'next/link'
 import Navbar from '../components/navbar'
+import {useState} from 'react'
+import {useRouter} from 'next/router'
 
 const myLoader = ({ src, width, quality }) => {
     return `${src}?w=${width}&q=${quality || 75}`
 }
 
 const Pros = ({ pros }) => {
+    const router = useRouter()
+        const handleSubmit = async (event) => {
+            event.preventDefault()
+
+            const data = {
+              search: event.target.search.value,
+            }
+
+            const JSONdata = JSON.stringify(data)
+            console.log(JSONdata);
+
+            const endpoint = 'http://127.0.0.1:8000/api/v1/search/'
+
+            const options = {
+              method: 'POST',
+              headers: {
+                'Content-Type': 'application/json',
+              },
+              body: JSONdata,
+            }
+
+            const response = await fetch(endpoint, options)
+            const result = await response.json()
+            router.push("/")
+          }
+
+
   return (
     <>
     <Head>
@@ -17,6 +46,44 @@ const Pros = ({ pros }) => {
     </Head>
 
     <Navbar />
+
+      <form className="flex p-2 m-2" onSubmit={handleSubmit}>
+         <input
+            type="text"
+            placeholder="Search"
+            name="search"
+            className="
+            w-full
+            rounded
+            py-3 m-2
+            px-[14px]
+            text-body-color text-base
+            border border-[f0f0f0]
+            outline-none
+            focus-visible:shadow-none
+            focus:border-primary
+            "
+            required
+            />
+              <button
+                type="submit"
+                className="
+                w-full
+                text-white
+                bg-blue-600
+                rounded
+                border border-primary
+                p-3 m-2
+                transition
+                hover:bg-blue-800
+                max-w-min
+                "
+                >
+             Search
+             </button>
+
+      </form>
+
           <div className="bg-gray-100 justify-center p-2 m-2 flex flex-wrap">
           {pros.map((pro) => (
                       <div key={pro.id}>

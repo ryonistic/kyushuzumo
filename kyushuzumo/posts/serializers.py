@@ -1,6 +1,6 @@
 from django.contrib.auth import get_user_model
 from rest_framework import serializers
-from .models import Contact, Post, Pro
+from .models import Admission, Contact, Post, Pro
 
 
 class ProSerializer(serializers.ModelSerializer):
@@ -30,3 +30,10 @@ class ContactSerializer(serializers.ModelSerializer):
     class Meta:
         model = Contact
         fields = ('id', 'name', 'email', 'phone', 'message')
+
+class AdmissionSerializer(serializers.ModelSerializer):
+    """Setting up the default user model as a serialized
+    entry in DRF"""
+    class Meta:
+        model = Admission
+        fields = ('id', 'name', 'email', 'phone', 'experience_level')

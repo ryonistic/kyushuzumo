@@ -83,3 +83,12 @@ class Contact(models.Model):
 
     def __str__(self):
         return str(self.name)
+
+class Admission(models.Model):
+    name = models.CharField(max_length=255)
+    email = models.EmailField()
+    phone = models.CharField(max_length=15)
+    experience_level = models.CharField(max_length=500)
+
+    def __str__(self):
+        return str(self.name)

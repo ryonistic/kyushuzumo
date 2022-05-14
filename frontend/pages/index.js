@@ -36,6 +36,10 @@ export default function Home() {
     </Link>
     
     </div>
+    <div className="p-2 m-2 flex flex-wrap">
+
+    
+    </div>
     </>
   )
 }

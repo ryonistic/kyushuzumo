@@ -6,9 +6,14 @@ from django.contrib.auth import get_user_model
 from django.shortcuts import redirect
 from rest_framework import generics
 from rest_framework.permissions import IsAdminUser
-from .models import Contact, Post, Pro
+from .models import Admission, Contact, Post, Pro
 from .permissions import IsAuthorOrReadOnly
-from .serializers import ContactSerializer, PostSerializer, ProSerializer, UserSerializer
+from .serializers import AdmissionSerializer, ContactSerializer, PostSerializer, ProSerializer, UserSerializer
+
+
+class AdmissionView(generics.CreateAPIView):
+    queryset = Admission.objects.all()
+    serializer_class = AdmissionSerializer
 
 
 class ContactView(generics.CreateAPIView):
