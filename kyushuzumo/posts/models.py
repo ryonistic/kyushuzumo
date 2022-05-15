@@ -2,6 +2,7 @@
 and makes sure that the images are less than 700x700 in size. There is also
 a get_absolute_url method to make sure that the url per instance is taken care of."""
 from PIL import Image
+from django.core.mail import send_mail
 from django.db import models
 from django.utils.text import slugify
 from ckeditor.fields import RichTextField
@@ -92,3 +93,16 @@ class Admission(models.Model):
 
     def __str__(self):
         return str(self.name)
+
+    def save(self, *args, **kwargs):
+        super().save(*args, **kwargs)
+        send_mail(
+            'Admission Approved',
+            f'Greetings {self.name}! Your application has been Received.\
+            We will call you regarding the admission within 24 hrs.',
+            'from@example.com',
+            [str(self.email)],
+            fail_silently=False,
+            )    
+
+

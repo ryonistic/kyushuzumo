@@ -761,18 +761,14 @@ Ensure the default browser behavior of the `hidden` attribute.
   max-width: 56rem;
 }
 
-.max-w-xs {
-  max-width: 20rem;
-}
-
-.max-w-md {
-  max-width: 28rem;
-}
-
 .max-w-min {
   max-width: -webkit-min-content;
   max-width: -moz-min-content;
   max-width: min-content;
+}
+
+.max-w-md {
+  max-width: 28rem;
 }
 
 .flex-shrink {
