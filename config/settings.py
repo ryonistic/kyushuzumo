@@ -180,8 +180,6 @@ BLEACH_STRIP_COMMENTS = False
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'  # During development only
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
-STRIPE_PUBLIC_KEY = secret_manager('STRIPE_PUBLIC_KEY')
-STRIPE_SECRET_KEY = secret_manager('STRIPE_SECRET_KEY')
 SITE_ID = 1
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 print(BASE_DIR)
