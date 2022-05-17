@@ -7,7 +7,7 @@ Author: Ramsharan Kanwar (ryonistic)
 ## **This code was written with Django 4.0.4.**
 
 ## Showcase
-<img src=" https://github.com/ryonistic/kyushuzumo/blob/main/showcase/Home.png?raw=true" width="600" height=auto alt="Home Page" />
+<img src="https://github.com/ryonistic/kyushuzumo/blob/main/showcase/Home.png?raw=true" width="600" height=auto alt="Home Page" />
 <img src="https://github.com/ryonistic/kyushuzumo/blob/main/showcase/Contact.png?raw=true" width="600" height=auto alt="Contact Page" />
 <img src="https://github.com/ryonistic/kyushuzumo/blob/main/showcase/Pros.png?raw=true" width="600" height=auto alt="Pros Page" />
 <img src="https://github.com/ryonistic/kyushuzumo/blob/main/showcase/admissions.png?raw=true" width="600" height=auto alt="Admissions Page" />
